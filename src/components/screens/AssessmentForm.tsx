@@ -80,6 +80,7 @@ export const AssessmentForm = ({ onComplete }: AssessmentFormProps) => {
         currentStep={state.currentStep + 1}
         totalSteps={totalSteps}
         title={currentStepData.title}
+        subtitle={currentStepData.subtitle}
         onBack={handleBack}
         canGoBack={state.currentStep > 0}
       />

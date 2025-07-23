@@ -42,6 +42,7 @@ export interface ActionPlan {
 
 export interface FormStep {
   title: string;
+  subtitle: string;
   fields: FormField[];
 }
 

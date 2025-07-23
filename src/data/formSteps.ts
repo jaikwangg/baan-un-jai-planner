@@ -2,7 +2,8 @@ import { FormStep } from '../types/assessment';
 
 export const formSteps: FormStep[] = [
   {
-    title: 'รายรับ-รายจ่ายของผู้ประเมิน',
+    title: 'รายรับ-รายจ่าย',
+    subtitle: 'ของผู้ประเมิน',
     fields: [
       {
         name: 'mainIncome',
@@ -42,7 +43,8 @@ export const formSteps: FormStep[] = [
     ]
   },
   {
-    title: 'ภาระหนี้สินของผู้ประเมิน',
+    title: 'ภาระหนี้สิน',
+    subtitle: 'ของผู้ประเมิน',
     fields: [
       {
         name: 'existingLoans',
@@ -61,7 +63,8 @@ export const formSteps: FormStep[] = [
     ]
   },
   {
-    title: 'พฤติกรรมการออมของผู้ประเมิน',
+    title: 'พฤติกรรม',
+    subtitle: 'การออมของผู้ประเมิน',
     fields: [
       {
         name: 'savingFrequency',
@@ -94,7 +97,8 @@ export const formSteps: FormStep[] = [
     ]
   },
   {
-    title: 'ข้อมูลส่วนบุคคลของผู้ประเมิน',
+    title: 'ข้อมูลส่วนบุคคล',
+    subtitle: 'ของผู้ประเมิน',
     fields: [
       {
         name: 'age',
@@ -127,7 +131,8 @@ export const formSteps: FormStep[] = [
     ]
   },
   {
-    title: 'เป้าหมายของผู้ประเมิน',
+    title: 'เป้าหมาย',
+    subtitle: 'ของผู้ประเมิน',
     fields: [
       {
         name: 'targetAmount',
