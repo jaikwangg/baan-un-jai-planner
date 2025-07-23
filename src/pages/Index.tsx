@@ -17,6 +17,7 @@ const Index = () => {
   const [actionPlan, setActionPlan] = useState<ActionPlan | null>(null);
 
   const handleSplashComplete = () => {
+    console.log('Splash complete, hasConsented:', state.hasConsented);
     if (state.hasConsented) {
       setAppState('assessment');
     } else {
@@ -25,8 +26,10 @@ const Index = () => {
   };
 
   const handlePDPAConsent = (consented: boolean) => {
+    console.log('PDPA consent:', consented);
     dispatch({ type: 'SET_CONSENT', payload: consented });
     if (consented) {
+      console.log('Setting app state to assessment');
       setAppState('assessment');
     } else {
       // User declined, redirect to splash or show decline message
@@ -67,6 +70,7 @@ const Index = () => {
   // Mobile-first container
   const containerClass = "max-w-md mx-auto min-h-screen bg-background";
 
+  console.log('Current app state:', appState, 'Assessment state:', state);
   switch (appState) {
     case 'splash':
       return (

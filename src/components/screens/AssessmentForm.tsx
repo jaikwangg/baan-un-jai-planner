@@ -32,12 +32,18 @@ export const AssessmentForm = ({ onComplete }: AssessmentFormProps) => {
   };
 
   const handleNext = () => {
+    console.log('Attempting to proceed to next step');
+    console.log('Current step:', state.currentStep, 'Total steps:', totalSteps);
+    console.log('Validation result:', validateStep());
+    console.log('Current data:', state.data);
+    
     if (!validateStep()) return;
     
     if (state.currentStep < totalSteps - 1) {
+      console.log('Moving to next step:', state.currentStep + 1);
       dispatch({ type: 'SET_STEP', payload: state.currentStep + 1 });
     } else {
-      // Complete assessment
+      console.log('Completing assessment');
       onComplete(state.data as AssessmentData);
     }
   };
