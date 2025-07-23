@@ -1,0 +1,55 @@
+name: Deploy Vite App to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+env:    
+  CID: ${{ secrets.CID }}
+  CONTRACT_ADDRESS: ${{ secrets.CONTRACT_ADDRESS }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write     # peaceiris/gh-pages needs this
+
+    steps:
+      # 1) checkout
+      - uses: actions/checkout@v3
+
+      # 2) node + pnpm/yarn/npm cache
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: vite-ui/package-lock.json 
+
+      # 3) create .env **before** install/build
+      - name: Generate .env for Vite
+        run: |
+          mkdir -p vite-ui
+          cat <<EOF > vite-ui/.env
+          VITE_METADATA_URI=ipfs://${CID}/metadata.json
+          VITE_CONTRACT_ADDRESS=${CONTRACT_ADDRESS}
+          EOF
+
+      # 4) install deps
+      - name: Install dependencies
+        working-directory: vite-ui
+        run: npm ci
+
+      # 5) build
+      - name: Build Vite
+        working-directory: vite-ui
+        run: npm run build
+
+      # 6) deploy to gh-pages
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_branch: gh-pages         # หรือใช้ default ก็ได้
+          publish_dir: vite-ui/dist
+          # ถ้าไม่อยากให้ push แล้ว trigger ตัวเองอีกรอบ:
+          disable_nojekyll: true          # สำหรับ Vite+GH-Pages

@@ -7,7 +7,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["vite-ui/src/*"]
     },
     "noImplicitAny": false,
     "noUnusedParameters": false,
