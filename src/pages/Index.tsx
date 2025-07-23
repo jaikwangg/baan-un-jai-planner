@@ -29,8 +29,8 @@ const Index = () => {
     if (consented) {
       setAppState('assessment');
     } else {
-      // User declined, stay on PDPA screen or show message
-      setAppState('pdpa');
+      // User declined, redirect to splash or show decline message
+      setAppState('splash');
     }
   };
 
