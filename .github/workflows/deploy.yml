@@ -4,10 +4,6 @@ on:
   push:
     branches: [main]
 
-env:    
-  CID: ${{ secrets.CID }}
-  CONTRACT_ADDRESS: ${{ secrets.CONTRACT_ADDRESS }}
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
