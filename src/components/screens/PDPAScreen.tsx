@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { ScrollArea } from '../ui/scroll-area';
+import { Checkbox } from '../ui/checkbox';
 import { AppLogo } from '../AppLogo';
 
 interface PDPAScreenProps {
@@ -27,8 +28,17 @@ export const PDPAScreen = ({ onConsent }: PDPAScreenProps) => {
               className="h-64 w-full border rounded p-4"
               onScroll={(e) => {
                 const element = e.target as HTMLElement;
-                const isNearBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 50;
-                if (isNearBottom) setHasReadTerms(true);
+                const isNearBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 20;
+                console.log('Scroll detected:', { 
+                  scrollHeight: element.scrollHeight, 
+                  scrollTop: element.scrollTop, 
+                  clientHeight: element.clientHeight,
+                  isNearBottom 
+                });
+                if (isNearBottom) {
+                  console.log('User has read terms, enabling consent button');
+                  setHasReadTerms(true);
+                }
               }}
             >
               <div className="space-y-4 text-sm text-muted-foreground">
@@ -74,6 +84,20 @@ export const PDPAScreen = ({ onConsent }: PDPAScreenProps) => {
                 </p>
               </div>
             </ScrollArea>
+            
+            <div className="flex items-center space-x-2 mt-4">
+              <Checkbox 
+                id="terms"
+                checked={hasReadTerms}
+                onCheckedChange={(checked) => setHasReadTerms(!!checked)}
+              />
+              <label
+                htmlFor="terms"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                ข้าพเจ้าได้อ่านและเข้าใจข้อกำหนดและเงื่อนไขการใช้งานแล้ว
+              </label>
+            </div>
             
             <div className="flex gap-2 mt-6">
               <Button 
