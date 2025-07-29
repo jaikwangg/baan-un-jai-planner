@@ -34,7 +34,7 @@ export const ProgressHeader = ({
 
         {/* Info Box */}
         <div className="bg-[#FDD7A0] text-[#5C2F03] mt-4 px-4 py-3 rounded-xl flex items-start gap-2 shadow-sm">
-          <img src="/writing.svg" className="w-8 h-8 mt-1" alt="icon" />
+          <img src="/baan-un-jai-planner/writing.svg" className="w-8 h-8 mt-1" alt="icon" />
           <p className="text-sm leading-snug">
             โปรดระบุข้อมูลตามความจริง<br />
             เพื่อที่จะได้การประเมินที่ถูกต้องที่สุด

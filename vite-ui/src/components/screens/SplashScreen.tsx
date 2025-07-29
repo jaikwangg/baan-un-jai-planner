@@ -14,7 +14,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
     <div className="min-h-screen bg-primary flex flex-col items-center justify-center px-4">
       <div className="animate-pulse">
         <img
-          src="/splash2.png"
+          src="/baan-un-jai-planner/splash2.png"
           alt="Splash Logo"
           className="w-70 h-auto"
         />
