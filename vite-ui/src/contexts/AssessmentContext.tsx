@@ -23,10 +23,11 @@ const initialState: AssessmentState = {
 
 const assessmentReducer = (state: AssessmentState, action: AssessmentAction): AssessmentState => {
   switch (action.type) {
-    case 'UPDATE_DATA':
+    case 'UPDATE_DATA': {
       const newData = { ...state.data, ...action.payload };
       saveAssessment(newData);
       return { ...state, data: newData };
+    }
     case 'SET_STEP':
       return { ...state, currentStep: action.payload };
     case 'SET_CONSENT':

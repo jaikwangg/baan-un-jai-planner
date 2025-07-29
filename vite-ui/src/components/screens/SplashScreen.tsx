@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { AppLogo } from '../AppLogo';
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -7,14 +6,18 @@ interface SplashScreenProps {
 
 export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   useEffect(() => {
-    const timer = setTimeout(onComplete, 2000);
+    const timer = setTimeout(onComplete, 3000);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
   return (
     <div className="min-h-screen bg-primary flex flex-col items-center justify-center px-4">
       <div className="animate-pulse">
-        <AppLogo size="lg" />
+        <img
+          src="/splash2.png"
+          alt="Splash Logo"
+          className="w-70 h-auto"
+        />
       </div>
       <p className="text-primary-foreground/80 text-sm mt-4 text-center">
         ประเมินความพร้อมทางการเงิน

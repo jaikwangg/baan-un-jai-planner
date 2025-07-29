@@ -7,17 +7,17 @@ export const formSteps: FormStep[] = [
     fields: [
       {
         name: 'mainIncome',
-        label: 'รายได้หลัก',
+        label: 'รายได้ประจำต่อเดือน',
         type: 'number',
         required: true,
-        placeholder: 'กรอกรายได้หลัก (บาท)'
+        placeholder: 'กรอกรายได้ประจำต่อเดือน (บาท)'
       },
       {
         name: 'additionalIncome',
-        label: 'รายได้เสริม',
+        label: 'รายได้อื่นๆ',
         type: 'number',
         required: false,
-        placeholder: 'กรอกรายได้เสริม (บาท)'
+        placeholder: 'กรอกรายได้อื่นๆ (บาท)'
       },
       {
         name: 'incomeFrequency',
@@ -144,23 +144,23 @@ export const formSteps: FormStep[] = [
       {
         name: 'loanPeriod',
         label: 'ระยะเวลาผ่อนชำระ',
-        type: 'select',
+        type: 'number',
         required: true,
-        options: ['6 เดือน', '1 ปี', '2 ปี', '3 ปี', '5 ปี', '10 ปี', 'มากกว่า 10 ปี']
+        placeholder: 'กรอกระยะเวลาผ่อนชำระ (เดือน)'
       },
       {
-        name: 'purpose',
-        label: 'วัตถุประสงค์',
-        type: 'select',
+        name: 'interest',
+        label: 'อัตราดอกเบี้ย',
+        type: 'number',
         required: true,
-        options: ['ซื้อบ้าน/ที่ดิน', 'ซื้อรถ', 'ศึกษาต่อ', 'ธุรกิจ', 'รักษาพยาบาล', 'อื่นๆ']
+        placeholder: 'กรอกอัตราดอกเบี้ย (ร้อยละต่อปี)'
       },
       {
         name: 'location',
-        label: 'ข้อมูลตำแหน่ง (ถ้ามี)',
+        label: 'จังหวัดที่สนใจ',
         type: 'text',
-        required: false,
-        placeholder: 'กรอกจังหวัด/อำเภอ'
+        required: true,
+        placeholder: 'กรอกจังหวัด'
       }
     ]
   }

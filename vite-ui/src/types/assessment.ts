@@ -25,7 +25,7 @@ export interface AssessmentData {
   // Step 5: เป้าหมาย
   targetAmount: string;
   loanPeriod: string;
-  purpose: string;
+  interest: string;
   location: string;
 }
 

@@ -1,7 +1,3 @@
-import { ArrowLeft } from 'lucide-react';
-import { Button } from './ui/button';
-import { AppLogo } from './AppLogo';
-
 interface ProgressHeaderProps {
   currentStep: number;
   totalSteps: number;
@@ -11,75 +7,79 @@ interface ProgressHeaderProps {
   canGoBack: boolean;
 }
 
-export const ProgressHeader = ({ 
-  currentStep, 
-  totalSteps, 
-  title, 
+export const ProgressHeader = ({
+  currentStep,
+  totalSteps,
+  title,
   subtitle,
-  onBack, 
-  canGoBack 
+  onBack,
+  canGoBack,
 }: ProgressHeaderProps) => {
-  const progressPercentage = (currentStep / totalSteps) * 100;
+  const percentage = (currentStep / totalSteps) * 100;
+  const dashArray = 282.6; // 2πr where r = 45
 
   return (
-    <div className="bg-primary p-4">
-      <div className="flex items-center justify-between mb-4">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onBack}
-          disabled={!canGoBack}
-          className="text-primary-foreground hover:bg-white/10"
-        >
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
-        <AppLogo showText={false} />
-        <div className="w-8" />
-      </div>
-      
-      <div className="text-center text-primary-foreground mb-4">
-        <h1 className="text-lg font-bold">ประเมินความเสี่ยง</h1>
-        <h2 className="text-lg font-bold">การขอสินเชื่อ</h2>
-        <div className="mt-2 p-2 bg-white/10 rounded-lg">
-          <p className="text-sm">โปรดระบุข้อมูลตามความเป็นจริง</p>
-          <p className="text-sm">เพื่อที่จะได้การประเมินที่ถูกต้องที่สุด</p>
-        </div>
-      </div>
+    <div className="relative bg-white pb-2">
+      {/* 🔶 ครึ่งบนของ Card เป็นสีส้ม */}
+      <div className="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-[#F78B1F] to-[#F8B563] z-0" />
 
-      <div className="flex items-center justify-center">
-        <div className="relative w-24 h-24">
-          {/* Background circle */}
-          <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
-            <circle
-              cx="50"
-              cy="50"
-              r="40"
-              stroke="rgba(255,255,255,0.2)"
-              strokeWidth="8"
-              fill="none"
-            />
-            <circle
-              cx="50"
-              cy="50"
-              r="40"
-              stroke="white"
-              strokeWidth="8"
-              fill="none"
-              strokeDasharray={`${progressPercentage * 2.51} 251`}
-              strokeLinecap="round"
-            />
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-white text-lg font-bold">
-              {currentStep}/{totalSteps}
-            </span>
-          </div>
+      {/* Content ส่วนหน้า */}
+      <div className="relative z-10 px-4 pt-4">
+
+        {/* Page Title */}
+        <div className="text-white mt-2">
+          <h1 className="text-3xl font-bold leading-tight">ประเมินความเสี่ยง</h1>
+          <h2 className="text-3xl font-bold -mt-1">การขอสินเชื่อ</h2>
         </div>
-        
-        <div className="ml-4 text-primary-foreground">
-          <h3 className="text-lg font-bold text-teal-300">{title}</h3>
-          <h4 className="text-lg font-bold text-teal-300">{subtitle}</h4>
-          <p className="text-sm opacity-90">รายละเอียดเพิ่มเติม</p>
+
+        {/* Info Box */}
+        <div className="bg-[#FDD7A0] text-[#5C2F03] mt-4 px-4 py-3 rounded-xl flex items-start gap-2 shadow-sm">
+          <img src="/writing.svg" className="w-8 h-8 mt-1" alt="icon" />
+          <p className="text-sm leading-snug">
+            โปรดระบุข้อมูลตามความจริง<br />
+            เพื่อที่จะได้การประเมินที่ถูกต้องที่สุด
+          </p>
+        </div>
+
+        {/* Floating Card */}
+        <div className="bg-white mt-5 p-5 rounded-2xl shadow-md flex items-center h-[180px]">
+          {/* Progress Circle */}
+          <div className="relative w-28 h-28 ml-2">
+            <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
+              <circle
+                cx="50"
+                cy="50"
+                r="45"
+                stroke="#ECECEC"
+                strokeWidth="10"
+                fill="none"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="45"
+                stroke="#F78B1F"
+                strokeWidth="10"
+                fill="none"
+                strokeDasharray={`${(percentage / 100) * dashArray} ${dashArray}`}
+                strokeLinecap="round"
+              />
+            </svg>
+            <div className="absolute inset-0 flex items-center justify-center text-black font-extrabold text-3xl">
+              {currentStep}/{totalSteps}
+            </div>
+          </div>
+
+          {/* Step Info */}
+          <div className="ml-10">
+            <div className="text-[#246D73] font-extrabold text-2xl leading-tight">
+              {title}
+            </div>
+            <div className="text-[#246D73] font-extrabold text-2xl leading-tight">
+              {subtitle}
+            </div>
+            <div className="text-[#4E9BA1] text-l mt-1">รายละเอียดเพิ่มเติม</div>
+          </div>
         </div>
       </div>
     </div>
