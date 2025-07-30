@@ -34,22 +34,14 @@ export const evaluateAssessment = (data: AssessmentData): AssessmentResult => {
 };
 
 export const getActionPlan = (result: AssessmentResult, data: AssessmentData): ActionPlan => {
-  const behaviorPlan = [];
-  const debtManagementPlan = [];
-  
+  const behaviorPlan: string[] = [];
+
   if (!result.passed) {
     behaviorPlan.push(
-      'วางแผนการเงินรายเดือนให้ชัดเจน',
-      'ลดค่าใช้จ่ายที่ไม่จำเป็น',
-      'เพิ่มรายได้เสริมหากเป็นไปได้',
-      'สร้างวินัยในการออมเงินอย่างสม่ำเสมอ'
-    );
-    
-    debtManagementPlan.push(
-      'จัดทำรายการหนี้สินทั้งหมด',
-      'จัดลำดับความสำคัญในการชำระหนี้',
-      'เจรจาเงื่อนไขการผ่อนชำระใหม่',
-      'หลีกเลี่ยงการก่อหนี้เพิ่มเติม'
+      'ลดค่าใช้จ่ายรายวัน 10%',
+      'ออมขั้นต่ำ 1,500 บาท/เดือน',
+      'กันเงินฉุกเฉิน 2,000 บาท',
+      'เพิ่มรายได้เสริม'
     );
   } else {
     behaviorPlan.push(
@@ -58,17 +50,38 @@ export const getActionPlan = (result: AssessmentResult, data: AssessmentData): A
       'สร้างกองทุนฉุกเฉิน',
       'ทบทวนแผนการเงินอย่างสม่ำเสมอ'
     );
-    
-    debtManagementPlan.push(
-      'ใช้สินเชื่ออย่างรอบคอบ',
-      'เลือกแหล่งเงินกู้ที่มีดอกเบี้ยต่ำ',
-      'อ่านเงื่อนไขสัญญาให้เข้าใจ',
-      'วางแผนการชำระให้เหมาะกับรายได้'
-    );
   }
-  
-  return { behaviorPlan, debtManagementPlan };
+
+  const debtPlans = [
+    {
+      label: 'แผน A',
+      description: 'เพิ่มชำระขั้นต่ำ 1,500 บาท/เดือน',
+      benefits: [
+        'โอกาสขอสินเชื่อมีโอกาสผ่านมากขึ้น',
+        'เหลือเงินใช้จ่ายรายเดือนสูง',
+      ],
+    },
+    {
+      label: 'แผน B',
+      description: 'เพิ่มชำระขั้นต่ำ 2,500 บาท/เดือน',
+      benefits: [
+        'โอกาสขอสินเชื่อมีโอกาสผ่านมากขึ้น',
+        'เหลือเงินใช้ 4,500 บาท/เดือน',
+      ],
+    },
+    {
+      label: 'แผน C',
+      description: 'เพิ่มชำระขั้นต่ำ 3,500 บาท/เดือน',
+      benefits: [
+        'โอกาสขอสินเชื่อมีโอกาสผ่านมากขึ้น',
+        'เหลือเงินใช้จ่ายต่ำ อาจกระทบฉุกเฉิน',
+      ],
+    },
+  ];
+
+  return { behaviorPlan, debtPlans };
 };
+
 
 // Local storage helpers
 export const saveAssessment = (data: Partial<AssessmentData>) => {

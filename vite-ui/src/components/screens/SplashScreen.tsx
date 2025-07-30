@@ -11,7 +11,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   }, [onComplete]);
 
   return (
-    <div className="min-h-screen bg-primary flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen bg-[#F27030] flex flex-col items-center justify-center px-4">
       <div className="animate-pulse">
         <img
           src="/baan-un-jai-planner/splash2.png"

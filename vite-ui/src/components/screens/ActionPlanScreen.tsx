@@ -11,13 +11,23 @@ interface ActionPlanScreenProps {
 
 export const ActionPlanScreen = ({ actionPlan, onBack, onRestart }: ActionPlanScreenProps) => {
   return (
-    <div className="min-h-screen bg-[#FFA726] px-4 py-6 text-[#212121]">
+    <div className="relative bg-white pb-2">
+    <div className="h-[350px] bg-[#FFA726] px-4 py-6 text-[#212121]">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
+        <Button variant="ghost" size="icon" onClick={onBack} className="text-white">
+          <ArrowLeft className="h-5 w-5" />
+        </Button>
+        <AppLogo showText={false} />
+        <div className="w-8" />
+      </div>
+
       {/* Title */}
-      <h1 className="text-center text-3xl font-bold text-white mb-4">
+      <h1 className="text-center text-3xl font-bold text-white mb-6">
         บ้านอุ่นใจ ช่วยวางแผน
       </h1>
 
-      {/* แผนปรับพฤติกรรม */}
+      {/* ✅ แผนปรับพฤติกรรม */}
       <div className="bg-white rounded-xl shadow-md p-5 mb-6">
         <h2 className="font-bold text-lg mb-4">แผนปรับพฤติกรรม</h2>
         <ul className="space-y-2 text-sm">
@@ -29,17 +39,20 @@ export const ActionPlanScreen = ({ actionPlan, onBack, onRestart }: ActionPlanSc
           ))}
         </ul>
       </div>
-          
-      {/* แผนแนะนำการผ่อนชำระ */}
-      {actionPlan.debtPlans && (
+
+      {/* ✅ แผนแนะนำการผ่อนชำระ */}
+      {actionPlan.debtPlans.length > 0 && (
         <div className="space-y-4">
-          <h2 className="font-bold text-lg mb-2">แผนแนะนำการผ่อนชำระ</h2>
+          <h2 className="text-center text-2xl font-bold mb-4">แผนแนะนำการผ่อนชำระ</h2>
           {actionPlan.debtPlans.map((plan, index) => (
-            <div key={index} className="bg-[#FFF3E0] rounded-xl p-4">
-              <p className={`font-semibold ${getPlanColor(plan.label)}`}>
+            <div
+              key={index}
+              className="bg-[#FFF3E0] rounded-xl p-4 shadow-sm"
+            >
+              <p className={`font-semibold mb-2 ${getPlanColor(plan.label)}`}>
                 {plan.label} : {plan.description}
               </p>
-              <ul className="mt-2 space-y-1 text-sm">
+              <ul className="space-y-1 text-sm">
                 {plan.benefits.map((b, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-gray-700 mt-1" />
@@ -53,7 +66,7 @@ export const ActionPlanScreen = ({ actionPlan, onBack, onRestart }: ActionPlanSc
       )}
 
       {/* ปุ่มประเมินใหม่ */}
-      <div className="mt-8">
+      <div className="mt-10">
         <Button
           className="w-full bg-[#FB8C00] hover:bg-[#F57C00] text-white rounded-full py-3 text-base font-semibold"
           onClick={onRestart}
@@ -65,10 +78,11 @@ export const ActionPlanScreen = ({ actionPlan, onBack, onRestart }: ActionPlanSc
         </p>
       </div>
     </div>
+    </div>
   );
 };
 
-// Helper สำหรับเลือกสีตามแผน
+// Helper สำหรับเลือกสีแผน A/B/C
 function getPlanColor(label: string) {
   if (label.includes('A')) return 'text-green-600';
   if (label.includes('B')) return 'text-orange-500';
