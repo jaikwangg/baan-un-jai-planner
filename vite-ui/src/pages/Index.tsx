@@ -7,6 +7,7 @@ import { ActionPlanScreen } from '../components/screens/ActionPlanScreen';
 import { useAssessment } from '../contexts/AssessmentContext';
 import { evaluateAssessment, getActionPlan, clearAssessment } from '../services/assessmentService';
 import { AssessmentData, AssessmentResult, ActionPlan } from '../types/assessment';
+import { mockActionPlan } from '../data/mockData';
 
 type AppState = 'splash' | 'pdpa' | 'assessment' | 'result' | 'plan';
 
@@ -104,16 +105,16 @@ const Index = () => {
         </div>
       );
 
-    case 'plan':
-      return (
-        <div className={containerClass}>
-          <ActionPlanScreen
-            actionPlan={actionPlan!}
-            onBack={handleBackToResult}
-            onRestart={handleRestart}
-          />
-        </div>
-      );
+      case 'plan':
+        return (
+          <div className={containerClass}>
+            <ActionPlanScreen
+              actionPlan={actionPlan || mockActionPlan}
+              onBack={handleBackToResult}
+              onRestart={handleRestart}
+            />
+          </div>
+        );
 
     default:
       return null;

@@ -37,8 +37,13 @@ export interface AssessmentResult {
 
 export interface ActionPlan {
   behaviorPlan: string[];
-  debtManagementPlan: string[];
+  debtPlans?: {
+    label: string;
+    description: string;
+    benefits: string[];
+  }[];
 }
+
 
 export interface FormStep {
   title: string;

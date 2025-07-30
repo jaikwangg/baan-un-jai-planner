@@ -21,7 +21,7 @@ export const ProgressHeader = ({
   return (
     <div className="relative bg-white pb-2">
       {/* 🔶 ครึ่งบนของ Card เป็นสีส้ม */}
-      <div className="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-[#F78B1F] to-[#F8B563] z-0" />
+      <div className="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-[#FF9F00] to-[#FA7C3F] z-0" />
 
       {/* Content ส่วนหน้า */}
       <div className="relative z-10 px-4 pt-4">
