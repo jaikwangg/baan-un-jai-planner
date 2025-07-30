@@ -12,7 +12,13 @@ export interface AssessmentData {
 
   // Step 3: พฤติกรรมการออม
   savingFrequency: string;
-  savingAmount: string;
+  dailySavingAmount?: string;
+  weeklySavingAmount?: string;
+  monthlySavingAmount?: string;
+  multiSavingAmount?: string;
+  timesPerMonth?: string;
+  timesPerWeek?: string;
+  timesPerDay?: string;
   savingAccount: string;
   numberOfAccounts: string;
 
@@ -55,8 +61,11 @@ export interface FormStep {
 export interface FormField {
   name: keyof AssessmentData;
   label: string;
-  type: 'text' | 'number' | 'select';
-  options?: string[];
-  required: boolean;
+  type: 'text' | 'number' | 'select' | 'radio' | 'checkbox-group';
+  required?: boolean;
   placeholder?: string;
+  options?: string[];
+  subFields?: {
+    [option: string]: FormField[];
+  };
 }

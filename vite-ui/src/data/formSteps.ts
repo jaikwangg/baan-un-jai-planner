@@ -68,34 +68,77 @@ export const formSteps: FormStep[] = [
     fields: [
       {
         name: 'savingFrequency',
-        label: 'ความถี่การออมรายเดือน',
-        type: 'select',
+        label: 'รูปแบบการออม',
+        type: 'radio',
         required: true,
-        options: ['ไม่ออม', 'ไม่แน่นอน', 'เดือนละครั้ง', 'หลายครั้งต่อเดือน']
-      },
-      {
-        name: 'savingAmount',
-        label: 'จำนวนการออมรายเดือน',
-        type: 'number',
-        required: false,
-        placeholder: 'กรอกจำนวนเงินออม (บาท)'
+        options: [
+          'ออมประจำทุกวัน',
+          'ออมประจำทุกสัปดาห์',
+          'ออมประจำทุกเดือน',
+          'ไม่มีการออมประจำ',
+        ],
+        subFields: {
+          'ออมประจำทุกวัน': [
+            {
+              name: 'dailySavingAmount',
+              label: 'จำนวนเงินที่ออมต่อวัน',
+              type: 'number',
+              placeholder: 'บาท',
+            },
+            {
+              name: 'timesPerDay',
+              label: 'ติดต่อกันมาแล้ว',
+              type: 'number',
+              placeholder: 'วัน',
+            },
+          ],
+          'ออมประจำทุกสัปดาห์': [
+            {
+              name: 'weeklySavingAmount',
+              label: 'จำนวนเงินที่ออมต่อวัน',
+              type: 'number',
+              placeholder: 'บาท',
+            },
+            {
+              name: 'timesPerWeek',
+              label: 'ติดต่อกันมาแล้ว',
+              type: 'number',
+              placeholder: 'สัปดาห์',
+            },
+          ],
+          'ออมประจำทุกเดือน': [
+            {
+              name: 'monthlySavingAmount',
+              label: 'จำนวนเงินที่ออมต่อเดือน',
+              type: 'number',
+              placeholder: 'บาท',
+            },
+            {
+              name: 'timesPerMonth',
+              label: 'ติดต่อกันมาแล้ว',
+              type: 'number',
+              placeholder: 'เดือน',
+            },
+          ],
+        },
       },
       {
         name: 'savingAccount',
         label: 'บัญชีที่ใช้ในการออม',
         type: 'select',
         required: true,
-        options: ['ไม่มี', 'บัญชีออมทรัพย์', 'บัญชีกระแสรายวัน', 'บัญชีประจำ', 'กองทุน']
+        options: ['ไม่มี', 'บัญชีออมทรัพย์', 'บัญชีกระแสรายวัน', 'บัญชีประจำ', 'กองทุน'],
       },
       {
         name: 'numberOfAccounts',
         label: 'จำนวนบัญชีที่มี',
         type: 'select',
         required: true,
-        options: ['ไม่มี', '1 บัญชี', '2-3 บัญชี', '4-5 บัญชี', 'มากกว่า 5 บัญชี']
-      }
-    ]
-  },
+        options: ['ไม่มี', '1 บัญชี', '2-3 บัญชี', '4-5 บัญชี', 'มากกว่า 5 บัญชี'],
+      },
+    ],
+  }
+  ,
   {
     title: 'ข้อมูลส่วนบุคคล',
     subtitle: 'ของผู้ประเมิน',

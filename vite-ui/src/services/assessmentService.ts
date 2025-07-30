@@ -8,7 +8,7 @@ export const evaluateAssessment = (data: AssessmentData): AssessmentResult => {
   const mainIncome = parseFloat(data.mainIncome) || 0;
   const livingCosts = parseFloat(data.livingCosts) || 0;
   const otherDebts = parseFloat(data.otherDebts) || 0;
-  const savingAmount = parseFloat(data.savingAmount) || 0;
+  const savingAmount = parseFloat(data.savingAccount) || 0;
   
   // Income vs expenses ratio
   if (mainIncome > livingCosts + otherDebts) score += 30;
