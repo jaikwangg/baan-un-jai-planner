@@ -24,8 +24,8 @@ export const PDPAScreen = ({ onConsent }: PDPAScreenProps) => {
             <CardTitle className="text-[#FF9F00] text-lg">การยินยอมให้ข้อมูลส่วนบุคคล</CardTitle>
           </CardHeader>
           <CardContent>
-            <ScrollArea 
-              className="h-64 w-full border rounded p-4"
+            <ScrollArea
+              className="h-64 md:h-96 w-full border rounded p-4"
               onScroll={(e) => {
                 const element = e.target as HTMLElement;
                 const isNearBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 20;

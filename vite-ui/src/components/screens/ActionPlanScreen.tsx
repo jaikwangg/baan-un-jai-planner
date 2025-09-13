@@ -12,7 +12,7 @@ interface ActionPlanScreenProps {
 export const ActionPlanScreen = ({ actionPlan, onBack, onRestart }: ActionPlanScreenProps) => {
   return (
     <div className="relative bg-white pb-2">
-    <div className="h-[350px] bg-[#FFA726] px-4 py-6 text-[#212121]">
+    <div className="h-[350px] md:h-[400px] lg:h-[450px] bg-[#FFA726] px-4 py-6 text-[#212121]">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <Button variant="ghost" size="icon" onClick={onBack} className="text-white">
@@ -23,14 +23,14 @@ export const ActionPlanScreen = ({ actionPlan, onBack, onRestart }: ActionPlanSc
       </div>
 
       {/* Title */}
-      <h1 className="text-center text-3xl font-bold text-white mb-6">
+      <h1 className="text-center text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8">
         บ้านอุ่นใจ ช่วยวางแผน
       </h1>
 
       {/* ✅ แผนปรับพฤติกรรม */}
-      <div className="bg-white rounded-xl shadow-md p-5 mb-6">
-        <h2 className="font-bold text-lg mb-4">แผนปรับพฤติกรรม</h2>
-        <ul className="space-y-2 text-sm">
+      <div className="bg-white rounded-xl shadow-md p-5 md:p-6 mb-6">
+        <h2 className="font-bold text-lg md:text-xl mb-4">แผนปรับพฤติกรรม</h2>
+        <ul className="space-y-2 text-sm md:text-base">
           {actionPlan.behaviorPlan.map((item, index) => (
             <li key={index} className="flex items-start gap-2">
               <Check className="w-4 h-4 text-blue-600 mt-1" />
@@ -43,7 +43,7 @@ export const ActionPlanScreen = ({ actionPlan, onBack, onRestart }: ActionPlanSc
       {/* ✅ แผนแนะนำการผ่อนชำระ */}
       {actionPlan.debtPlans.length > 0 && (
         <div className="space-y-4">
-          <h2 className="text-center text-2xl font-bold mb-4">แผนแนะนำการผ่อนชำระ</h2>
+          <h2 className="text-center text-2xl md:text-3xl font-bold mb-4">แผนแนะนำการผ่อนชำระ</h2>
           {actionPlan.debtPlans.map((plan, index) => (
             <div
               key={index}

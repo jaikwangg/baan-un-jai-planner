@@ -85,10 +85,10 @@ export const AssessmentForm = ({ onComplete }: AssessmentFormProps) => {
         canGoBack={state.currentStep > 0}
       />
       
-      <div className="p-4">
+      <div className="p-4 md:p-6">
         <Card>
-          <CardContent className="p-6">
-            <div className="space-y-6">
+          <CardContent className="p-6 md:p-8">
+            <div className="space-y-6 max-w-lg mx-auto">
               {currentStepData.fields.map(field => (
                 <FormField
                   key={field.name}
@@ -100,7 +100,7 @@ export const AssessmentForm = ({ onComplete }: AssessmentFormProps) => {
               ))}
             </div>
             
-            <div className="flex gap-2 mt-8">
+            <div className="flex gap-2 mt-8 max-w-lg mx-auto">
               <Button
                 variant="outline"
                 onClick={handleBack}

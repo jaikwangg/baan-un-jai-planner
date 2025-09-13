@@ -16,7 +16,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         <img
           src="/baan-un-jai-planner/splash2.png"
           alt="Splash Logo"
-          className="w-70 h-auto"
+          className="w-70 md:w-96 h-auto"
         />
       </div>
       <p className="text-primary-foreground/80 text-sm mt-4 text-center">

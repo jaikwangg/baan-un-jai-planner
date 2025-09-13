@@ -68,8 +68,9 @@ const Index = () => {
     setAppState('assessment');
   };
 
-  // Mobile-first container
-  const containerClass = "max-w-md mx-auto min-h-screen bg-background";
+  // Responsive container
+  const containerClass =
+    "max-w-md md:max-w-2xl lg:max-w-4xl mx-auto min-h-screen bg-background p-4 md:p-8";
 
   console.log('Current app state:', appState, 'Assessment state:', state);
   switch (appState) {

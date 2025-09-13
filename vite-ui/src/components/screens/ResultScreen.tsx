@@ -16,18 +16,18 @@ export const ResultScreen = ({ result, onProceed, onGetAdvice }: ResultScreenPro
     <div className="min-h-screen flex flex-col items-center justify-start bg-[#FFA726] text-center">
 
       {/* Card */}
-      <div className="bg-white rounded-t-2xl shadow-md w-[300px] mt-40 px-6 py-8">
-        <h2 className="text-xl font-bold text-[#00796B] mb-4">
+      <div className="bg-white rounded-t-2xl shadow-md w-[300px] md:w-[400px] lg:w-[500px] mt-20 md:mt-40 px-6 py-8">
+        <h2 className="text-xl md:text-2xl font-bold text-[#00796B] mb-4">
           ผลการประเมิน{passed ? '' : 'การขอสินเชื่อเบื้องต้น'}
         </h2>
 
         {!passed && (
           <div className="flex justify-center mb-4">
-            <AlertTriangle className="w-16 h-16 text-[#FFA000]" />
+            <AlertTriangle className="w-16 h-16 md:w-20 md:h-20 text-[#FFA000]" />
           </div>
         )}
 
-        <p className="text-base font-medium text-[#E65100]">
+        <p className="text-base md:text-lg font-medium text-[#E65100]">
           {passed
             ? 'คุณผ่านเกณฑ์การประเมินเบื้องต้น'
             : 'การประเมินพบว่า\nคุณยังไม่ผ่านเกณฑ์การประเมินในตอนนี้'}
@@ -35,7 +35,7 @@ export const ResultScreen = ({ result, onProceed, onGetAdvice }: ResultScreenPro
 
         {!passed && (
           <>
-            <p className="text-sm text-gray-700 mt-4">
+            <p className="text-sm md:text-base text-gray-700 mt-4">
               แต่ไม่ต้องห่วง<br />เราช่วยคุณวางแผนให้ผ่านได้!
             </p>
 
