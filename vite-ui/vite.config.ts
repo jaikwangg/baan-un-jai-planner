@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+
 export default defineConfig(({ command }) => ({
   plugins: [react()],
   base: command === 'build' ? '/baan-un-jai-planner/' : '/',
@@ -9,4 +10,13 @@ export default defineConfig(({ command }) => ({
       '@': path.resolve(__dirname, 'src'),
     },
   },
-}))
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
+}));

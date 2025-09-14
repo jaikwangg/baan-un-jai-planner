@@ -2,6 +2,7 @@ import { AlertTriangle } from 'lucide-react';
 import { Button } from '../ui/button';
 import { AssessmentResult } from '../../types/assessment';
 import { AppLogo } from '../AppLogo';
+import { Link } from 'react-router-dom'; // Import Link
 
 interface ResultScreenProps {
   result: AssessmentResult;
@@ -46,6 +47,11 @@ export const ResultScreen = ({ result, onProceed, onGetAdvice }: ResultScreenPro
               <Button onClick={onGetAdvice} className="flex-1 bg-[#FF9800] hover:bg-[#FB8C00] text-white">
                 ต้องการ
               </Button>
+            </div>
+            <div className="mt-4">
+              <Link to="/chat">
+                <Button variant="link">Chat with an Expert</Button>
+              </Link>
             </div>
           </>
         )}
