@@ -4,18 +4,20 @@ import { PDPAScreen } from '../components/screens/PDPAScreen';
 import { AssessmentForm } from '../components/screens/AssessmentForm';
 import { ResultScreen } from '../components/screens/ResultScreen';
 import { ActionPlanScreen } from '../components/screens/ActionPlanScreen';
+import { OCRScreen } from '../components/screens/OCRScreen';
 import { useAssessment } from '../contexts/AssessmentContext';
 import { evaluateAssessment, getActionPlan, clearAssessment } from '../services/assessmentService';
 import { AssessmentData, AssessmentResult, ActionPlan } from '../types/assessment';
 import { mockActionPlan } from '../data/mockData';
 
-type AppState = 'splash' | 'pdpa' | 'assessment' | 'result' | 'plan';
+type AppState = 'splash' | 'pdpa' | 'assessment' | 'result' | 'plan' | 'ocr';
 
 const Index = () => {
   const { state, dispatch } = useAssessment();
   const [appState, setAppState] = useState<AppState>('splash');
   const [assessmentResult, setAssessmentResult] = useState<AssessmentResult | null>(null);
   const [actionPlan, setActionPlan] = useState<ActionPlan | null>(null);
+  const [ocrText, setOcrText] = useState<string>('');
 
   const handleSplashComplete = () => {
     console.log('Splash complete, hasConsented:', state.hasConsented);
@@ -45,6 +47,19 @@ const Index = () => {
     setAssessmentResult(result);
     setActionPlan(plan);
     setAppState('result');
+  };
+
+  const handleGoToOCR = () => {
+    setAppState('ocr');
+  };
+
+  const handleOCRComplete = (text: string) => {
+    setOcrText(text);
+    setAppState('assessment');
+  };
+
+  const handleBackToAssessment = () => {
+    setAppState('assessment');
   };
 
   const handleProceedToPlan = () => {
@@ -90,7 +105,7 @@ const Index = () => {
     case 'assessment':
       return (
         <div className={containerClass}>
-          <AssessmentForm onComplete={handleAssessmentComplete} />
+          <AssessmentForm onComplete={handleAssessmentComplete} onOCR={handleGoToOCR} />
         </div>
       );
 
@@ -115,6 +130,13 @@ const Index = () => {
             />
           </div>
         );
+
+    case 'ocr':
+      return (
+        <div className={containerClass}>
+          <OCRScreen onComplete={handleOCRComplete} onBack={handleBackToAssessment} />
+        </div>
+      );
 
     default:
       return null;

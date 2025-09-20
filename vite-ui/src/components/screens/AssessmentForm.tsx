@@ -9,9 +9,10 @@ import { AssessmentData } from '../../types/assessment';
 
 interface AssessmentFormProps {
   onComplete: (data: AssessmentData) => void;
+  onOCR: () => void;
 }
 
-export const AssessmentForm = ({ onComplete }: AssessmentFormProps) => {
+export const AssessmentForm = ({ onComplete, onOCR }: AssessmentFormProps) => {
   const { state, dispatch } = useAssessment();
   const [errors, setErrors] = useState<Record<string, string>>({});
   
@@ -101,6 +102,13 @@ export const AssessmentForm = ({ onComplete }: AssessmentFormProps) => {
             </div>
             
             <div className="flex gap-2 mt-8">
+              <Button
+                variant="outline"
+                onClick={onOCR}
+                className="flex-1"
+              >
+                OCR
+              </Button>
               <Button
                 variant="outline"
                 onClick={handleBack}
