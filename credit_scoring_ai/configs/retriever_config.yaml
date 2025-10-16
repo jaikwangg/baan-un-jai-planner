@@ -1,0 +1,10 @@
+hybrid:
+  vector:
+    k: 12
+  bm25:
+    k: 20
+  rerank: false
+filters:
+  region_default: TH-BKK
+  max_dsr_default: 0.5
+
